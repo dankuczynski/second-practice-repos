@@ -8,7 +8,7 @@ from utils.connection_module import connection
 class CustomerDAOImp(CustomerDAOInt):
     def create_customer_entry(self, customer: Customer) -> Customer:
         try:
-            sql = "insert into customers value(default, %s, %s) returning customer_id"
+            sql = "insert into customers values(default, %s, %s) returning customer_id"
             cursor = connection.cursor()
             cursor.execute(sql, (customer.first_name, customer.last_name))
             connection.commit()
